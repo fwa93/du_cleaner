@@ -5,7 +5,20 @@ trap 'exit_status="$?" && echo Failed on line: $LINENO at command: $BASH_COMMAND
 
 # The directory that contain subdirectories. The dubdirectories will be removed if old enough.
 target="$1"
+if ! [ -d "$target" ] || [ -z "$target" ] ; then
+    if [ -z "$target" ]; then
+        echo "please specify the target directory. E.g., ./du_cleaner.sh my_target/target_dir"
+        exit 1
+    fi
+    echo "directory $target does not exist"
+    exit 1
+fi
 
+if [ $# -ne 1 ]
+then
+ echo "Usage: ./du_cleaner.sh [my_target/target_dir]"
+ exit 1
+fi
 # Thresholds
 # If the available % is lower than this (or same), the cleaning starts.
 perc_min=20
