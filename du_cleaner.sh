@@ -20,7 +20,7 @@ for target in "$@" ; do
 done
 # Thresholds THESE CAN BE CHANGED
 # If the available % is lower than this (or same), the cleaning starts.
-perc_min=99
+perc_min=20
 # If the available GB is lower (or same) than this, the cleaning starts.
 gb_min=190
 
